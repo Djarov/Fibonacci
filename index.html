@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fibonacci Generator</title>
+</head>
+<body>
+  <h1>Fibonacci-reeks Generator</h1>
+  <label for="n">Voer een getal in: </label>
+  <input type="number" id="n" min="1">
+  <button onclick="genereerFibonacci()">Generate</button>
+
+  <h3>Result:</h3>
+  <p id="result"></p>
+
+  <script>
+    function genereerFibonacci() {
+      const n = parseInt(document.getElementById("n").value);
+      let fibo = [1, 2];
+
+      if (isNaN(n) || n <= 0) {
+        document.getElementById("result").textContent = "Voer een geldig positief getal in!";
+        return;
+      }
+
+      while (fibo.length < n) {
+        let nextValue = fibo[fibo.length - 1] + fibo[fibo.length - 2];
+        fibo.push(nextValue);
+      }
+
+      document.getElementById("result").textContent = fibo.slice(0, n).join(", ");
+    }
+  </script>
+</body>
+</html>
